@@ -5,6 +5,15 @@
     <body>
         <h1>Welcome to Bestaurants.edu</h1>
 
+        <p>Search for a restaurant: </p>
+        <form action="/restaurant/{id}" method="post">
+            <input id="restaurant_id" name="restaurant_id" type="hidden" value="{{ restaurant.getId() }}">
+            <label for="restaurant_name">Restaurant name:</label>
+            <input id="restaurant_name" name="restaurant_name" type="text" required>
+
+            <button type="submit">Search!</button>
+        </form>
+
         <p>Create a new cuisine:</p>
 
         <form action="/cuisines" method="post">
