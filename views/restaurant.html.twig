@@ -5,15 +5,11 @@
     <body>
 
         {% if restaurants is not empty %}
-            <p>Here are the restaurants:</p>
-            <ul>
+            <p>Here's your restaurant:</p>
                 {% for restaurant in restaurants %}
-                    <li>{{ restaurant.getName }}</li>
-                    <ul>
-                      <li>{{ restaurant.getDescription }}</li>
-                    </ul>
+                    <h2>{{ restaurant.getName }}</h2>
+                    <p>{{ restaurant.getDescription }}</p>
                 {% endfor %}
-            </ul>
         {% endif %}
 
         <p><a href='/'>Home</a></p>
