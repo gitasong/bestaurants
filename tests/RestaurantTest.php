@@ -152,5 +152,22 @@
             $this->assertEquals($test_restaurant, $result);
         }
 
+        function testFindRestaurantByName()
+        {
+            //Arrange
+            $name = "Home stuff";
+            $description = "Some really great description";
+            $cuisine_id = 1;
+            $test_restaurant = new Restaurant($name, $description, $cuisine_id);
+            $test_restaurant->save();
+            $restaurant_name = $test_restaurant->getName();
+
+            //Act
+            $result = Restaurant::findRestaurantByName($test_restaurant->getName());
+
+            //Assert
+            $this->assertEquals($test_restaurant, $result);
+        }
+
     }
 ?>

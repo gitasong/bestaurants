@@ -97,6 +97,23 @@
             return $found_restaurant;
         }
 
+        static function findRestaurantByName($search_name)
+        {
+            $returned_restaurants = $GLOBALS['DB']->prepare("SELECT * FROM restaurants WHERE name = :name");
+            $returned_restaurants->bindParam(':name', $search_name, PDO::PARAM_STR);
+            $returned_restaurants->execute();
+            foreach ($returned_restaurants as $restaurant) {
+                $restaurant_name = $restaurant['name'];
+                $restaurant_description = $restaurant['description'];
+                $cuisine_id = $restaurant['cuisine_id'];
+                $restaurant_id = $restaurant['id'];
+                if ($restaurant_name == $search_name) {
+                    $found_restaurant = new Restaurant($restaurant_name, $restaurant_description, $cuisine_id, $restaurant_id);
+                }
+            }
+            return $found_restaurant;
+        }
+
     }
 
  ?>
