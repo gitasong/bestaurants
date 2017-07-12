@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>Bestaurants.edu</title>
+    </head>
+    <body>
+
+        {% if restaurants is not empty %}
+            <p>Here are the restaurants:</p>
+            <ul>
+                {% for restaurant in restaurants %}
+                    <li>{{ restaurant.getName }}</li>
+                    <ul>
+                      <li>{{ restaurant.getDescription }}</li>
+                    </ul>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <p><a href='/'>Home</a></p>
+    </body>
+</html>
