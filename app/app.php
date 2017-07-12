@@ -26,6 +26,12 @@
         return $app['twig']->render('restaurants.html.twig', array('restaurants' => Restaurant::getAll()));
     });
 
+    $app->get("/restaurant/{id}", function() use ($app) {
+      $name = $_POST['name'];
+      $restaurant = Restaurant::find($id);
+      return $app['twig']->render('restaurant.html.twig', array('restaurant' => $restaurant);
+  });
+
     $app->post("/restaurants", function() use ($app) {
       $name = $_POST['name'];
       $description = $_POST['description'];
