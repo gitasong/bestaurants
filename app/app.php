@@ -26,11 +26,11 @@
         return $app['twig']->render('restaurants.html.twig', array('restaurants' => Restaurant::getAll()));
     });
 
-    $app->get("/restaurant/{id}", function() use ($app) {
-      $name = $_POST['name'];
-      $restaurant = Restaurant::findRestaurantByName($name);
-      return $app['twig']->render('restaurant.html.twig', array('restaurant' => $restaurant);
-  });
+    $app->get("/restaurant/{id}", function($id) use ($app) {
+      $name = $_GET['name'];
+      $restaurants = Restaurant::findRestaurantByName($name);
+      return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::findRestaurantByName()));
+    });
 
     $app->post("/restaurants", function() use ($app) {
       $name = $_POST['name'];
@@ -40,7 +40,7 @@
       $task->save();
       $cuisine = Cuisine::find($cuisine_id);
       return $app['twig']->render('cuisine.html.twig', array('cuisine' => $cuisine, 'restaurants' => $cuisine->getRestaurants()));
-  });
+    });
 
     $app->get("/cuisines", function() use ($app) {
         return $app['twig']->render('cuisines.html.twig', array('cuisines' => Cuisine::getAll()));
