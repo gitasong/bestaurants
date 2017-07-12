@@ -28,7 +28,7 @@
 
     $app->get("/restaurant/{id}", function() use ($app) {
       $name = $_POST['name'];
-      $restaurant = Restaurant::find($id);
+      $restaurant = Restaurant::findRestaurantByName($name);
       return $app['twig']->render('restaurant.html.twig', array('restaurant' => $restaurant);
   });
 
