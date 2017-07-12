@@ -26,10 +26,10 @@
         return $app['twig']->render('restaurants.html.twig', array('restaurants' => Restaurant::getAll()));
     });
 
-    $app->get("/restaurant/{id}", function($id) use ($app) {
-      $name = $_GET['name'];
+    $app->post("/restaurant/{id}", function($id) use ($app) {
+      $name = $_POST['restaurant_name'];
       $restaurants = Restaurant::findRestaurantByName($name);
-      return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::findRestaurantByName()));
+      return $app['twig']->render('restaurant.html.twig', array('restaurants' => Restaurant::getAll()));
     });
 
     $app->post("/restaurants", function() use ($app) {
